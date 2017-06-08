@@ -163,13 +163,11 @@ public class AutoUtils {
         if (lp == null) return;
 
         if (lp.width > 0) {
-            if (lp.width >= 2)
-                lp.width = getDisplayWidthValue(lp.width);
+            lp.width = getDisplayWidthValue(lp.width);
         }
 
         if (lp.height > 0) {
-            if (lp.height >= 2)
-                lp.height = getDisplayHeightValue(lp.height);
+            lp.height = getDisplayHeightValue(lp.height);
         }
 
         Integer width = (Integer) getField(view, View.class, "mMinWidth");
@@ -198,10 +196,10 @@ public class AutoUtils {
     }
 
     public static int getDisplayWidthValue(int designWidthValue) {
-        return designWidthValue * displayWidth / designWidth;
+        return Math.round((float) designWidthValue * displayWidth / designWidth);
     }
 
     public static int getDisplayHeightValue(int designHeightValue) {
-        return designHeightValue * displayHeight / designHeight;
+        return Math.round((float) designHeightValue * displayHeight / designHeight);
     }
 }
